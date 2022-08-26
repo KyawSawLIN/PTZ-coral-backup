@@ -2,6 +2,8 @@
 # pan position ranges from 0-350
 # tilt position ranges from 0-60
 # type Ctrl+C (keyboard interrupt) for breaking while loop s
+# You should be familiar with pelco-d format to understand this
+
 
 import serial
 import time
@@ -73,10 +75,12 @@ def pan(var):  # for generating pan command in pelco-d
 
 def tilt(var):
 
+    # this is incomplete output string.var is modulated angle user input(MAUI). this line is to format MAUI with required pelco commands in string format
     txt1 = '07 00 4D {0:0>4s}'.format(var)
 
     checksum_result = checksum(txt1)
 
+    # add checksum to output string
     txt2 = 'FF {0} {1:0>2s}'.format(txt1, checksum_result)
     print('output         = ', txt2)
     print()
