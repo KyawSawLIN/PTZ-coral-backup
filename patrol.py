@@ -80,7 +80,7 @@ def tilt(var):
 
     ser.write(bytes.fromhex(txt2))
 
-f = [45,90,135,180,135,90,45,0]
+f = [45,90,135,180,135,90,45,0]  # repeating pan angles 
 
 def func(special_counter = 0 ):
     while 1:
@@ -89,7 +89,7 @@ def func(special_counter = 0 ):
         pan(var_0)
         time.sleep(10) # replace any time you want the pan patrolling to stop for instead of 10s
         special_counter += 1
-        if special_counter == 8:
+        if special_counter == 8: # reset f to start bit 
             special_counter = 0
         print('Thread alive, but it will die on program termination')
 
